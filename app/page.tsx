@@ -2,10 +2,9 @@
 
 import dynamic from "next/dynamic";
 
-const ArchitectPortfolio = dynamic(
-  () => import("../app/components/Architect"),
-  { ssr: false }
-);
+const ArchitectPortfolio = dynamic(() => import("./components/Architect"), {
+  ssr: false,
+});
 
 export default function Page() {
   return <ArchitectPortfolio />;
