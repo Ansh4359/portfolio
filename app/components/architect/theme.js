@@ -22,11 +22,16 @@ export const monoFont = "'ui-monospace', 'Cascadia Code', 'Source Code Pro', mon
 export const headFont = "'Space Grotesk', sans-serif";
 export const bodyFont = "'Inter', sans-serif";
 
-export const NAV_LINKS = ["Home", "Projects", "Skills", "Contact"];
+export const NAV_LINKS = [
+  { label: "Home", path: "/" },
+  { label: "Projects", path: "/projects" },
+  { label: "Skills", path: "/skills" },
+  { label: "Contact", path: "/contact" },
+];
 
 export const SIDE_ITEMS = [
-  { icon: "dashboard", label: "Overview", page: "Home" },
-  { icon: "source", label: "Source", page: "Projects" },
-  { icon: "account_tree", label: "Architecture", page: "Skills" },
-  { icon: "rocket_launch", label: "Deployment", page: "Contact" },
+  { icon: "dashboard", label: "Overview", path: "/" },
+  { icon: "source", label: "Source", path: "/projects" },
+  { icon: "account_tree", label: "Architecture", path: "/skills" },
+  { icon: "rocket_launch", label: "Deployment", path: "/contact" },
 ];

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Icon from "../Icon";
 import { C, headFont, NAV_LINKS } from "../theme";
 
-export default function TopNav({ page, setPage }) {
+export default function TopNav({ pathname, router }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function TopNav({ page, setPage }) {
         }}
       >
         <button
-          onClick={() => setPage("Home")}
+          onClick={() => router.push("/")}
           style={{
             fontFamily: headFont,
             fontWeight: 900,
@@ -50,25 +50,25 @@ export default function TopNav({ page, setPage }) {
         </button>
 
         <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
-          {NAV_LINKS.map((link) => (
+          {NAV_LINKS.map(({ label, path }) => (
             <button
-              key={link}
-              onClick={() => setPage(link)}
+              key={path}
+              onClick={() => router.push(path)}
               style={{
                 fontFamily: headFont,
                 fontWeight: 700,
                 fontSize: 13,
                 letterSpacing: "-0.01em",
-                color: page === link ? C.primary : C.outline,
+                color: pathname === path ? C.primary : C.outline,
                 background: "none",
                 border: "none",
                 cursor: "pointer",
-                borderBottom: page === link ? `2px solid ${C.primary}` : "2px solid transparent",
+                borderBottom: pathname === path ? `2px solid ${C.primary}` : "2px solid transparent",
                 paddingBottom: 4,
                 transition: "all 0.2s ease",
               }}
             >
-              {link}
+              {label}
             </button>
           ))}
         </div>

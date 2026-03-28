@@ -1,7 +1,7 @@
 import Icon from "../Icon";
 import { C, monoFont, SIDE_ITEMS } from "../theme";
 
-export default function SideNav({ page, setPage }) {
+export default function SideNav({ pathname, router }) {
   return (
     <aside
       style={{
@@ -27,13 +27,13 @@ export default function SideNav({ page, setPage }) {
       </div>
 
       <nav style={{ flex: 1 }}>
-        {SIDE_ITEMS.map(({ icon, label, page: targetPage }) => {
-          const active = page === targetPage;
+        {SIDE_ITEMS.map(({ icon, label, path }) => {
+          const active = pathname === path;
 
           return (
             <button
               key={label}
-              onClick={() => setPage(targetPage)}
+              onClick={() => router.push(path)}
               style={{
                 display: "flex",
                 alignItems: "center",

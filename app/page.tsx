@@ -1,11 +1,12 @@
-"use client"
+"use client";
 
 import dynamic from "next/dynamic";
 
-const ArchitectPortfolio = dynamic(() => import("./components/Architect"), {
-  ssr: false,
-});
+const HomePage = dynamic(
+  () => import("@/app/components/architect/pages/HomePage"),
+  { ssr: false }
+);
 
 export default function Page() {
-  return <ArchitectPortfolio />;
+  return <HomePage />;
 }

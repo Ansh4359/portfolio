@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Footer from "../layout/Footer";
 import Icon from "../Icon";
 import { C, headFont, monoFont } from "../theme";
@@ -73,7 +74,8 @@ function truncate(value, max = 42) {
   return `${value.slice(0, max - 1)}...`;
 }
 
-export default function HomePage({ setPage }) {
+export default function HomePage() {
+  const router = useRouter();
   const [repoConfig, setRepoConfig] = useState({
     repo: DEFAULT_GITHUB_REPO,
     branch: DEFAULT_GITHUB_BRANCH,
@@ -293,7 +295,7 @@ export default function HomePage({ setPage }) {
 
             <div className="fade-up-d3" style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
               <button
-                onClick={() => setPage("Projects")}
+                onClick={() => router.push("/projects")}
                 style={{
                   padding: "14px 28px",
                   borderRadius: 8,
