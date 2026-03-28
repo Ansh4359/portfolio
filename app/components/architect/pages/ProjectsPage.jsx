@@ -14,7 +14,7 @@ function ProjectCard({ project }) {
       style={{
         background: hovered ? C.surfaceBright : C.surfaceContainerLow,
         borderRadius: 12,
-        padding: 28,
+        padding: "10px 64px 0",
         transition: "background 0.3s ease",
         display: "flex",
         flexDirection: "column",
@@ -145,7 +145,7 @@ export default function ProjectsPage() {
 
   return (
     <div>
-      <section style={{ padding: "80px 64px 60px", maxWidth: 1280, margin: "0 auto" }}>
+      <section style={{ padding: "15px 64px 60px", maxWidth: 1280, margin: "0 auto" }}>
         <div style={{ marginBottom: 48 }}>
           <span
             style={{
@@ -175,10 +175,10 @@ export default function ProjectsPage() {
               <br />
               <span style={{ color: C.primaryFixedDim }}>Systems.</span>
             </h1>
-            <p style={{ maxWidth: 340, fontSize: 14, color: C.onSurfaceVariant, lineHeight: 1.7 }}>
+            {/* <p style={{ maxWidth: 340, fontSize: 14, color: C.onSurfaceVariant, lineHeight: 1.7 }}>
               A curated selection of architectural experiments and production-ready applications,
               built with a focus on performance, scalability, and code integrity.
-            </p>
+            </p> */}
           </div>
         </div>
 

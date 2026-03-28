@@ -5,7 +5,7 @@ import { C, headFont, monoFont } from "../theme";
 
 const contactItems = [
   { icon: "alternate_email", label: "Direct Channel", value: "anshsingh4359@gmail.com", color: C.primary },
-  { icon: "location_on", label: "Base Operations", value: "Berlin, DE // Remote", color: C.secondary },
+  { icon: "location_on", label: "Base Operations", value: "India, Delhi / Remote", color: C.secondary },
 ];
 
 const socialItems = [
@@ -61,7 +61,7 @@ export default function ContactPage() {
 
   return (
     <div>
-      <section style={{ padding: "80px 64px", maxWidth: 1280, margin: "0 auto" }}>
+      <section style={{ padding: "30px 64px", maxWidth: 1280, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "5fr 7fr", gap: 64, alignItems: "start" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
             <header>

@@ -29,9 +29,7 @@ export default function TopNav({ page, setPage }) {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          maxWidth: 1280,
-          margin: "0 auto",
-          padding: "0 32px",
+          padding: "0 32px 0",
           height: 72,
         }}
       >
@@ -48,7 +46,7 @@ export default function TopNav({ page, setPage }) {
             cursor: "pointer",
           }}
         >
-          
+          Ansh Singh K.
         </button>
 
         <div style={{ display: "flex", gap: 32, alignItems: "center" }}>

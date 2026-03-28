@@ -29,13 +29,19 @@ export default function Footer() {
             textTransform: "uppercase",
           }}
         >
-          © 2024 DIGITAL_ARCHITECT. Engineered with intent.
+          © 2026 ANSH SINGH. Engineered with intent.
         </span>
         <div style={{ display: "flex", gap: 32 }}>
-          {["GitHub", "LinkedIn", "Twitter"].map((label) => (
+          {[
+            { label: "GitHub", url: "https://github.com/ansh4359" },
+            { label: "LinkedIn", url: "https://www.linkedin.com/in/ansh01/" },
+            { label: "Twitter", url: "https://x.com/anshsingh4359" },
+          ].map(({ label, url }) => (
             <a
               key={label}
-              href="#"
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 fontFamily: monoFont,
                 fontSize: 10,

@@ -221,8 +221,8 @@ export default function HomePage({ setPage }) {
         style={{
           minHeight: "100vh",
           display: "flex",
-          alignItems: "center",
-          padding: "0 64px",
+          alignItems: "flex-start",
+          padding: "5px 64px 0",
           position: "relative",
           overflow: "hidden",
         }}
@@ -321,29 +321,6 @@ export default function HomePage({ setPage }) {
               >
                 View Projects <Icon name="arrow_forward" size={18} />
               </button>
-              <button
-                onClick={handleChangeRepo}
-                style={{
-                  padding: "14px 28px",
-                  borderRadius: 8,
-                  background: "rgba(48,53,59,0.2)",
-                  color: C.primary,
-                  border: "1px solid rgba(173,198,255,0.2)",
-                  fontFamily: headFont,
-                  fontWeight: 700,
-                  fontSize: 15,
-                  cursor: "pointer",
-                  transition: "all 0.2s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(48,53,59,0.4)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(48,53,59,0.2)";
-                }}
-              >
-                View Source
-              </button>
             </div>
 
             <div className="fade-up-d4" style={{ display: "flex", alignItems: "center", gap: 24, paddingTop: 16 }}>
@@ -415,7 +392,7 @@ export default function HomePage({ setPage }) {
               </div>
 
               <a
-                href={latestCommit.url}
+                href={"https://github.com/ansh4359"}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
