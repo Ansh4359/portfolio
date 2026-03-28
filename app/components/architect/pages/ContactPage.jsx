@@ -4,7 +4,7 @@ import Footer from "../layout/Footer";
 import { C, headFont, monoFont } from "../theme";
 
 const contactItems = [
-  { icon: "alternate_email", label: "Direct Channel", value: "hello@digital-architect.dev", color: C.primary },
+  { icon: "alternate_email", label: "Direct Channel", value: "anshsingh4359@gmail.com", color: C.primary },
   { icon: "location_on", label: "Base Operations", value: "Berlin, DE // Remote", color: C.secondary },
 ];
 
@@ -22,14 +22,40 @@ const formFields = [
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setError("");
 
     if (form.name && form.email && form.message) {
-      setSent(true);
-      setTimeout(() => setSent(false), 3000);
-      setForm({ name: "", email: "", message: "" });
+      setLoading(true);
+      
+      try {
+        const response = await fetch("/api/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Failed to send message");
+        }
+
+        setSent(true);
+        setTimeout(() => setSent(false), 3000);
+        setForm({ name: "", email: "", message: "" });
+      } catch (err) {
+        setError(err.message || "Failed to send message");
+        setTimeout(() => setError(""), 5000);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -276,16 +302,17 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
+                  disabled={loading}
                   style={{
                     padding: "18px 0",
                     borderRadius: 10,
-                    background: sent ? C.tertiary : C.primary,
-                    color: sent ? "#002e69" : C.onPrimary,
+                    background: loading ? C.outline : sent ? C.tertiary : C.primary,
+                    color: loading ? C.onSurfaceVariant : sent ? "#002e69" : C.onPrimary,
                     fontFamily: headFont,
                     fontWeight: 700,
                     fontSize: 16,
                     border: "none",
-                    cursor: "pointer",
+                    cursor: loading ? "not-allowed" : "pointer",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -294,7 +321,11 @@ export default function ContactPage() {
                     transition: "all 0.3s ease",
                   }}
                 >
-                  {sent ? (
+                  {loading ? (
+                    <>
+                      <span>Sending...</span>
+                    </>
+                  ) : sent ? (
                     <>
                       <Icon name="check_circle" size={20} /> Transmission Sent!
                     </>
@@ -305,6 +336,23 @@ export default function ContactPage() {
                     </>
                   )}
                 </button>
+
+                {error && (
+                  <div
+                    style={{
+                      padding: "12px 16px",
+                      borderRadius: 8,
+                      background: "rgba(244,67,54,0.1)",
+                      border: "1px solid rgba(244,67,54,0.3)",
+                      color: C.error,
+                      fontFamily: monoFont,
+                      fontSize: 12,
+                      textAlign: "center",
+                    }}
+                  >
+                    {error}
+                  </div>
+                )}
               </form>
             </div>
 
