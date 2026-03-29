@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Icon from "../Icon";
 import { C, headFont, monoFont, NAV_LINKS } from "../theme";
 
-export default function TopNav({ pathname, router, onOpenPalette }) {
+export default function TopNav({ pathname, router, onOpenPalette, onOpenTerminal }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -112,30 +112,44 @@ export default function TopNav({ pathname, router, onOpenPalette }) {
               ⌘K
             </kbd>
           </button>
-          {["code"].map((ic) => (
-            <button
-              key={ic}
+          <button
+            onClick={onOpenTerminal}
+            style={{
+              padding: 8,
+              borderRadius: 8,
+              background: "none",
+              border: "none",
+              color: C.primary,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontFamily: monoFont,
+              fontSize: 10,
+              gap: 6,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(173,198,255,0.08)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "none";
+            }}
+          >
+            <Icon name="code" size={18} />
+            <kbd
               style={{
-                padding: 8,
-                borderRadius: 8,
-                background: "none",
-                border: "none",
-                color: C.primary,
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "rgba(173,198,255,0.08)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "none";
+                fontFamily: monoFont,
+                fontSize: 9,
+                color: C.outline,
+                background: C.surfaceContainerHigh,
+                padding: "2px 6px",
+                borderRadius: 3,
+                border: `1px solid ${C.outlineVariant}30`,
               }}
             >
-              <Icon name={ic} size={20} />
-            </button>
-          ))}
+              ⌘\
+            </kbd>
+          </button>
         </div>
       </div>
     </nav>

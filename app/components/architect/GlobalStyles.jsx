@@ -151,6 +151,65 @@ export default function GlobalStyles() {
       .cmd-palette-modal input:focus {
         box-shadow: none !important;
       }
+
+      /* Terminal overlay */
+      .terminal-overlay { animation: fadeIn 0.15s ease; }
+      .terminal-modal { animation: cmdPaletteIn 0.2s ease; }
+      .terminal-modal input:focus {
+        box-shadow: none !important;
+      }
+
+      /* Shortcuts overlay */
+      .shortcuts-overlay { animation: fadeIn 0.15s ease; }
+      .shortcuts-modal { animation: cmdPaletteIn 0.2s ease; }
+
+      /* Konami mode */
+      @keyframes konamiGlow {
+        0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.15); }
+        50% { box-shadow: 0 0 40px rgba(255,215,0,0.3); }
+      }
+
+      body.konami-active {
+        --konami-gold: #ffd700;
+        --konami-purple: #b388ff;
+      }
+
+      body.konami-active .glass-nav {
+        border-bottom-color: rgba(255,215,0,0.2) !important;
+      }
+
+      @keyframes konamiBannerIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes konamiBannerOut {
+        from { opacity: 1; transform: translateY(0); }
+        to   { opacity: 0; transform: translateY(-20px); }
+      }
+
+      .konami-banner {
+        position: fixed;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 200;
+        font-family: ${monoFont};
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: #1a1a1a;
+        background: linear-gradient(135deg, #ffd700, #ffb300);
+        padding: 10px 24px;
+        border-radius: 8px;
+        animation: konamiBannerIn 0.3s ease;
+        box-shadow: 0 8px 32px rgba(255,215,0,0.3);
+      }
+
+      /* Keyboard hint badges on nav */
+      kbd {
+        font-family: ${monoFont};
+      }
     `}</style>
   );
 }

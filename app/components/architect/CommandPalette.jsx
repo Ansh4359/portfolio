@@ -98,7 +98,12 @@ export default function CommandPalette({ open, onClose }) {
         onClose();
         break;
       case "download":
-        window.open("/resume.pdf", "_blank");
+        const link = document.createElement("a");
+        link.href = "/resume.pdf";
+        link.download = "Ansh_Singh_Resume.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
         onClose();
         break;
       case "link":

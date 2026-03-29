@@ -223,6 +223,7 @@ export default function SkillsPage() {
           </div>
         </div>
 
+
         <div
           ref={terminalRef}
           style={{
@@ -273,6 +274,7 @@ export default function SkillsPage() {
           </div>
         </div>
       </section>
+
 
       <Footer />
     </div>
