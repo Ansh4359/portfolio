@@ -61,12 +61,16 @@ export default function DoomGame({ onClose }) {
       if (e.type !== "keydown") return;
 
       if (e.code === "Escape") {
-        if (state.phase === PHASE_PLAY) {
+        if (state.phase === PHASE_PLAY || state.phase === PHASE_DEAD) {
           document.exitPointerLock?.();
           stopAmbient();
           onClose();
         }
       }
+
+      if (e.code === "Digit1" && state.player.weapons[0]) state.player.currentWeapon = 0;
+      if (e.code === "Digit2" && state.player.weapons[1]) state.player.currentWeapon = 1;
+      if (e.code === "Digit3" && state.player.weapons[2]) state.player.currentWeapon = 2;
 
       if (e.code === "Enter") {
         if (state.phase === PHASE_TITLE) {
@@ -225,7 +229,7 @@ export default function DoomGame({ onClose }) {
           textAlign: "center",
         }}
       >
-        WASD move · Mouse look · Click shoot · 1/2/3 weapons · ESC close
+        WASD move · Mouse look · Click shoot  · ESC close
       </div>
     </div>
   );
