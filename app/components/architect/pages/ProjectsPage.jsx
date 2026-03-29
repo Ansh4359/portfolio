@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { FILTER_TABS, PROJECTS } from "../data";
 import Icon from "../Icon";
 import Footer from "../layout/Footer";
@@ -142,6 +143,7 @@ function ProjectCard({ project }) {
 
 export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState("ALL_FILES");
+  const router = useRouter();
 
   return (
     <div>
@@ -362,6 +364,7 @@ export default function ProjectsPage() {
         </p>
         <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
           <button
+            onClick={() => router.push("/contact")}
             style={{
               padding: "16px 32px",
               borderRadius: 8,
@@ -376,24 +379,26 @@ export default function ProjectsPage() {
               transition: "opacity 0.2s",
             }}
           >
-            INITIATE_CONTACT
+            CONTACT_ME
           </button>
-          <button
-            style={{
-              padding: "16px 32px",
-              borderRadius: 8,
-              background: C.surfaceContainerHigh,
-              color: C.onSurface,
-              fontFamily: monoFont,
-              fontWeight: 700,
-              fontSize: 12,
-              letterSpacing: "0.1em",
-              border: "1px solid rgba(66,71,83,0.3)",
-              cursor: "pointer",
-            }}
-          >
-            DOWNLOAD_RESUME.pdf
-          </button>
+          <a href="/resume.pdf" download>
+            <button
+              style={{
+                padding: "16px 32px",
+                borderRadius: 8,
+                background: C.surfaceContainerHigh,
+                color: C.onSurface,
+                fontFamily: monoFont,
+                fontWeight: 700,
+                fontSize: 12,
+                letterSpacing: "0.1em",
+                border: "1px solid rgba(66,71,83,0.3)",
+                cursor: "pointer",
+              }}
+            >
+              DOWNLOAD_RESUME
+            </button>
+          </a>
         </div>
       </section>
 

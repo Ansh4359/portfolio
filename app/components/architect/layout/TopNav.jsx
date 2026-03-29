@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Icon from "../Icon";
-import { C, headFont, NAV_LINKS } from "../theme";
+import { C, headFont, monoFont, NAV_LINKS } from "../theme";
 
-export default function TopNav({ pathname, router }) {
+export default function TopNav({ pathname, router, onOpenPalette }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -73,8 +73,46 @@ export default function TopNav({ pathname, router }) {
           ))}
         </div>
 
-        <div style={{ display: "flex", gap: 8 }}>
-          {["terminal", "code"].map((ic) => (
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <button
+            onClick={onOpenPalette}
+            style={{
+              padding: 8,
+              borderRadius: 8,
+              background: "none",
+              border: "none",
+              color: C.primary,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontFamily: monoFont,
+              fontSize: 10,
+              gap: 6,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(173,198,255,0.08)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "none";
+            }}
+          >
+            <Icon name="terminal" size={18} />
+            <kbd
+              style={{
+                fontFamily: monoFont,
+                fontSize: 9,
+                color: C.outline,
+                background: C.surfaceContainerHigh,
+                padding: "2px 6px",
+                borderRadius: 3,
+                border: `1px solid ${C.outlineVariant}30`,
+              }}
+            >
+              ⌘K
+            </kbd>
+          </button>
+          {["code"].map((ic) => (
             <button
               key={ic}
               style={{

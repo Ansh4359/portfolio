@@ -6,14 +6,38 @@ import { C, headFont, monoFont } from "../theme";
 
 function SkillBar({ name, pct }) {
   return (
-    <div style={{ marginBottom: 16 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-        <span style={{ fontSize: 12, color: C.onSurfaceVariant }}>{name}</span>
-        <span style={{ fontFamily: monoFont, fontSize: 11, color: C.tertiary, fontWeight: 600 }}>{pct}%</span>
-      </div>
-      <div style={{ background: C.surfaceContainerHigh, borderRadius: 999, height: 3, overflow: "hidden" }}>
-        <div className="skill-bar" style={{ width: `${pct}%`, height: "100%", background: C.tertiary, borderRadius: 999 }} />
-      </div>
+    <div
+      style={{
+        marginBottom: 12,
+        padding: "10px 12px",
+        background: "rgba(173,198,255,0.06)",
+        border: "1px solid rgba(173,198,255,0.12)",
+        borderRadius: 8,
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        transition: "all 0.2s ease",
+        cursor: "default",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = "rgba(173,198,255,0.1)";
+        e.currentTarget.style.borderColor = "rgba(173,198,255,0.25)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = "rgba(173,198,255,0.06)";
+        e.currentTarget.style.borderColor = "rgba(173,198,255,0.12)";
+      }}
+    >
+      <div
+        style={{
+          width: 6,
+          height: 6,
+          borderRadius: "50%",
+          background: C.tertiary,
+          flexShrink: 0,
+        }}
+      />
+      <span style={{ fontSize: 13, color: C.onSurface, fontWeight: 500 }}>{name}</span>
     </div>
   );
 }
@@ -48,7 +72,7 @@ export default function SkillsPage() {
 
   return (
     <div>
-      <section style={{ padding: "80px 64px", maxWidth: 1280, margin: "0 auto" }}>
+      <section style={{ padding: "20px 64px", maxWidth: 1280, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 280px", gap: 64, alignItems: "start", marginBottom: 96 }}>
           <div>
             <span
@@ -80,7 +104,7 @@ export default function SkillsPage() {
               <span style={{ color: C.primaryFixedDim }}>Digital Resilience</span>
             </h1>
             <p style={{ fontSize: 14, color: C.onSurfaceVariant, lineHeight: 1.8, maxWidth: 560, marginBottom: 20 }}>
-              With over 8 years of engineering experience, I view code as a medium for building
+              With over 1.5 years of engineering experience, I view code as a medium for building
               sustainable digital ecosystems. My approach merges the rigor of systems architecture with
               the fluid aesthetics of modern user interfaces.
             </p>
@@ -225,7 +249,7 @@ export default function SkillsPage() {
               CAPABILITIES.SH
             </span>
           </div>
-          <div style={{ padding: "28px 32px", fontFamily: monoFont, fontSize: 13, lineHeight: 2 }}>
+          <div style={{ padding: "28px 32px", fontFamily: monoFont, fontSize: 13, lineHeight: 2, maxHeight: "400px", overflowY: "auto", display: "flex", flexDirection: "column" }}>
             {TERMINAL_LINES.slice(0, visibleLines).map((line, index) => (
               <div key={index} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
                 {line.prompt ? (

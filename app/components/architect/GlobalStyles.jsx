@@ -134,6 +134,23 @@ export default function GlobalStyles() {
         background: ${C.tertiary};
         animation: ping 1s cubic-bezier(0,0,0.2,1) infinite;
       }
+
+      @keyframes cmdPaletteIn {
+        from { opacity: 0; transform: scale(0.96) translateY(-8px); }
+        to   { opacity: 1; transform: scale(1) translateY(0); }
+      }
+
+      .cmd-palette-overlay { animation: fadeIn 0.15s ease; }
+      .cmd-palette-modal { animation: cmdPaletteIn 0.2s ease; }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+
+      .cmd-palette-modal input:focus {
+        box-shadow: none !important;
+      }
     `}</style>
   );
 }
